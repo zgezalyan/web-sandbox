@@ -1,0 +1,24 @@
+{
+  "name": "web-sandbox",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monorepo sandbox for trying web tools with auth, React, Express, and SQLite",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run build -w @web-sandbox/shared && concurrently -n api,web -c cyan,magenta \"npm run dev -w @web-sandbox/api\" \"npm run dev -w @web-sandbox/web\"",
+    "build": "npm run build -w @web-sandbox/shared && npm run build -w @web-sandbox/api && npm run build -w @web-sandbox/web",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run build -w @web-sandbox/shared && npm run typecheck --workspaces --if-present",
+    "test": "npm run build -w @web-sandbox/shared && npm run test --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=22.5"
+  }
+}
