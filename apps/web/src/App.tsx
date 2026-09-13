@@ -16,6 +16,7 @@ import { GenerateTool } from "./pages/tools/GenerateTool";
 import { TimeTool } from "./pages/tools/TimeTool";
 import { ColorTool } from "./pages/tools/ColorTool";
 import { PlaygroundTool } from "./pages/tools/PlaygroundTool";
+import { CalcTool } from "./pages/tools/CalcTool";
 
 function Guard({ children }: { children: ReactNode }) {
   const { user, loading } = useAuth();
@@ -77,6 +78,7 @@ export function App() {
         <Route path="tools/time" element={<TimeTool />} />
         <Route path="tools/color" element={<ColorTool />} />
         <Route path="tools/playground" element={<PlaygroundTool />} />
+        <Route path="tools/calc" element={<CalcTool />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

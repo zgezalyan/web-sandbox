@@ -9,6 +9,7 @@ export const TOOL_IDS = [
   "time",
   "color",
   "playground",
+  "calc",
 ] as const;
 
 export type ToolId = (typeof TOOL_IDS)[number];
@@ -68,4 +69,5 @@ export const TOOL_CATALOG: {
   { id: "time", name: "Time Lab", blurb: "Unix timestamps and ISO dates" },
   { id: "color", name: "Color Lab", blurb: "Convert hex, RGB, and HSL" },
   { id: "playground", name: "Playground", blurb: "Sandboxed HTML, CSS, and JS" },
+  { id: "calc", name: "Calculator", blurb: "Evaluate arithmetic in the browser" },
 ];

@@ -77,6 +77,33 @@ test("saves and deletes user items", async () => {
   assert.equal(removed.status, 200);
 });
 
+test("saves a calc snippet", async () => {
+  const agent = request.agent(app);
+  await agent.post("/api/auth/login").send({ email: user.email, password: user.password });
+
+  const created = await agent.post("/api/items").send({
+    tool: "calc",
+    title: "two plus",
+    payload: JSON.stringify({ expr: "2 + 3 * 4", result: 14 }),
+  });
+  assert.equal(created.status, 201);
+  assert.equal(created.body.item.tool, "calc");
+  assert.match(created.body.item.payload, /expr/);
+  assert.match(created.body.item.payload, /result/);
+});
+
+test("rejects unknown tool ids", async () => {
+  const agent = request.agent(app);
+  await agent.post("/api/auth/login").send({ email: user.email, password: user.password });
+
+  const res = await agent.post("/api/items").send({
+    tool: "not-a-tool",
+    title: "nope",
+    payload: "{}",
+  });
+  assert.equal(res.status, 400);
+});
+
 test("proxy blocks private hosts", async () => {
   const agent = request.agent(app);
   await agent.post("/api/auth/login").send({ email: user.email, password: user.password });
