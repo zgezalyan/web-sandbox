@@ -7,6 +7,5 @@
     "declaration": false,
     "declarationMap": false
   },
-  "include": ["src"],
-  "references": [{ "path": "../../packages/shared" }]
+  "include": ["src"]
 }

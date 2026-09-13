@@ -15,7 +15,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@web-sandbox/shared": ["../../packages/shared/src/index.ts"]
+    }
   },
   "include": ["src"]
 }
